@@ -54,12 +54,14 @@ export function ReportsPage() {
   const monthlyTrend = getMonthlyTrend(items, 6);
   const rule5030 = apply5030Rule(filtered);
 
+  const PIE_COLORS = ['#3B82F6', '#22C55E', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#14B8A6', '#F97316'];
+
   const pieData = Object.entries(catDist)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 8)
-    .map(([id, amount]) => ({ label: findCategoryLabel(id), value: amount }));
+    .map(([id, amount], idx) => ({ label: findCategoryLabel(id), value: amount, color: PIE_COLORS[idx % PIE_COLORS.length] }));
 
-  const lineData = monthlyTrend.map((m) => ({ label: m.month, income: m.income, expenses: m.expenses }));
+  const lineData = monthlyTrend.map((m) => ({ label: m.month, value: m.expenses }));
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
     padding: '8px 20px',
@@ -159,7 +161,7 @@ export function ReportsPage() {
       {/* Categorías tab */}
       {tab === 'categorias' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <PieChart data={pieData} title="Distribución de gastos" />
+          <PieChart data={pieData} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {pieData.map(({ label, value }) => (
               <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px', borderRadius: '10px', background: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.02)' }}>

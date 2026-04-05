@@ -8,7 +8,7 @@ const COLORS = ['#3B82F6','#22C55E','#F59E0B','#EF4444','#8B5CF6','#EC4899','#14
 
 interface GoalFormProps {
   editGoal?: SavingsGoal;
-  onSave: (data: Omit<SavingsGoal, 'id' | 'createdAt' | 'currentAmount' | 'status'>) => void;
+  onSave: (data: Omit<SavingsGoal, 'id' | 'createdAt' | 'status'>) => void;
   onCancel?: () => void;
 }
 

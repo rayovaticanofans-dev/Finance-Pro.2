@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { BudgetList } from '@/components/budgets/BudgetList';
 import { BudgetAlerts } from '@/components/budgets/BudgetAlerts';

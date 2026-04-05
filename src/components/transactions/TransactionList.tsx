@@ -68,7 +68,7 @@ export function TransactionList({
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px' }}>
-            <Skeleton width={42} height={42} borderRadius={12} />
+            <Skeleton width={42} height={42} style={{ borderRadius: '12px' }} />
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <Skeleton width="60%" height={14} />
               <Skeleton width="40%" height={12} />

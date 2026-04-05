@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { GoalsList } from '@/components/goals/GoalsList';
 import { GoalForm } from '@/components/goals/GoalForm';

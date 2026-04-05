@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const TIPS = ['Registra cada gasto', 'Ahorra para el futuro', 'Controla tu presupuesto', 'Alcanza tus metas'];
 
