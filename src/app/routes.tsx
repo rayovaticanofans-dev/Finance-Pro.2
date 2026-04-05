@@ -15,6 +15,7 @@ const ScanReceiptPage = lazy(() => import('@/pages/ScanReceiptPage'));
 const SettingsPage = lazy(() => import('@/pages/SettingsPage'));
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 const OnboardingPage = lazy(() => import('@/pages/OnboardingPage'));
+const AIPage = lazy(() => import('@/pages/AIPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 function withSuspense(Component: React.ComponentType): React.ReactElement {
@@ -43,6 +44,7 @@ const routes: RouteObject[] = [
       { path: 'debts', element: withSuspense(DebtsPage) },
       { path: 'investments', element: withSuspense(InvestmentsPage) },
       { path: 'scan', element: withSuspense(ScanReceiptPage) },
+      { path: 'ai', element: withSuspense(AIPage) },
       { path: 'settings', element: withSuspense(SettingsPage) },
       { path: 'profile', element: withSuspense(ProfilePage) },
     ],
@@ -53,4 +55,6 @@ const routes: RouteObject[] = [
   },
 ];
 
-export const router = createBrowserRouter(routes);
+export const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL,
+});
