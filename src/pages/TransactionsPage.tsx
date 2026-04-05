@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
+import { useState } from 'react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { TransactionList } from '@/components/transactions/TransactionList';
 import { TransactionFilters } from '@/components/transactions/TransactionFilters';
@@ -11,7 +10,6 @@ import { useFinance } from '@/hooks/useFinance';
 import type { Item } from '@/types/finance';
 
 export default function TransactionsPage() {
-  const { isDark } = useTheme();
   const { filteredAndSorted, state, setFilter, setSort, deleteItem } = useFinance();
   const [showForm, setShowForm] = useState(false);
   const [editItem, setEditItem] = useState<Item | undefined>(undefined);

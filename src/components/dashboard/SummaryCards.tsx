@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useFinance } from '@/hooks/useFinance';
 import { useCurrency } from '@/hooks/useCurrency';
@@ -22,6 +22,27 @@ const SummaryCard = React.memo(function SummaryCard({
 }: SummaryCardProps) {
   const { isDark } = useTheme();
   const { formatAmount } = useCurrency();
+  const [displayAmount, setDisplayAmount] = useState(0);
+  const animRef = useRef<number>(0);
+
+  useEffect(() => {
+    const duration = 800;
+    const start = Date.now();
+    const endVal = amount;
+
+    const step = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayAmount(endVal * eased);
+      if (progress < 1) {
+        animRef.current = requestAnimationFrame(step);
+      }
+    };
+
+    animRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [amount]);
 
   const isPositive = (changePercent ?? 0) >= 0;
 
@@ -64,7 +85,7 @@ const SummaryCard = React.memo(function SummaryCard({
 
       <div>
         <p style={{ margin: '0 0 4px', fontSize: 'clamp(18px, 2.5vw, 24px)', fontWeight: 800, color: isDark ? '#F1F5F9' : '#1E293B', letterSpacing: '-0.5px' }}>
-          {formatAmount(amount)}
+          {formatAmount(displayAmount)}
         </p>
 
         {changePercent !== undefined && (

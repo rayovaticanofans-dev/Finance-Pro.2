@@ -40,7 +40,7 @@ function findCategoryLabel(id: string): string {
 export function TransactionForm({ editItem, onSuccess, onCancel }: TransactionFormProps) {
   const { isDark } = useTheme();
   const { addItem, updateItem } = useFinance();
-  const { currency: defaultCurrency, formatAmount } = useCurrencyContext();
+  const { currency: defaultCurrency } = useCurrencyContext();
 
   const [type, setType] = useState<TransactionType>(editItem?.type ?? 'expense');
   const [amount, setAmount] = useState(editItem?.amount?.toString() ?? '');

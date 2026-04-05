@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { BudgetCard } from './BudgetCard';
 import { EmptyState } from '@/components/ui/EmptyState';

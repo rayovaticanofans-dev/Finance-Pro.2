@@ -66,9 +66,9 @@ describe('getCategoryDistribution', () => {
 });
 
 describe('getSavingsRate', () => {
-  it('returns ratio of savings to income', () => {
+  it('returns percentage of savings relative to income', () => {
     const rate = getSavingsRate(items);
-    expect(rate).toBeCloseTo(2000 / 3000, 5);
+    expect(rate).toBeCloseTo((2000 / 3000) * 100, 5);
   });
   it('returns 0 when no income', () => {
     expect(getSavingsRate([makeItem({ type: 'expense', amount: 100 })])).toBe(0);

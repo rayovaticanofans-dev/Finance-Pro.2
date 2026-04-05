@@ -1,4 +1,3 @@
-import React from 'react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { CategoryManager } from '@/components/categories/CategoryManager';
 

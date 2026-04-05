@@ -68,11 +68,11 @@ export function useGoals() {
   }, [activeProfileId, contributions]);
 
   const addGoal = useCallback(
-    (goal: Omit<SavingsGoal, 'id' | 'createdAt' | 'currentAmount' | 'status'>) => {
+    (goal: Omit<SavingsGoal, 'id' | 'createdAt' | 'status'>) => {
       const newGoal: SavingsGoal = {
         ...goal,
         id: generateId(),
-        currentAmount: 0,
+        currentAmount: goal.currentAmount ?? 0,
         status: 'active' as GoalStatus,
         createdAt: new Date().toISOString(),
       };

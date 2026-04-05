@@ -2,7 +2,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
+// Determine base URL: configurable via BASE_URL env var, defaulting to /Finance-Pro.2/ for GitHub Pages
+const base =
+  typeof process !== 'undefined' && process.env && process.env['BASE_URL']
+    ? process.env['BASE_URL']
+    : '/Finance-Pro.2/';
+
 export default defineConfig({
+  base,
   plugins: [react()],
   resolve: {
     alias: {
