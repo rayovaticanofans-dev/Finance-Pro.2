@@ -25,8 +25,16 @@ function extractAmount(text: string): number | undefined {
   for (const pattern of AMOUNT_PATTERNS) {
     const match = text.match(pattern);
     if (match?.[1]) {
-      const cleaned = match[1].replace(/[,\s]/g, '').replace(',', '.');
-      const n = parseFloat(cleaned);
+      const raw = match[1].trim();
+      let normalized: string;
+      // European format: 1.234,56 → last separator is comma
+      if (/\.\d{3},\d{2}$/.test(raw)) {
+        normalized = raw.replace(/\./g, '').replace(',', '.');
+      } else {
+        // US format or plain: remove thousands separators (comma or space), keep decimal dot
+        normalized = raw.replace(/[,\s]/g, '');
+      }
+      const n = parseFloat(normalized);
       if (!isNaN(n) && n > 0) return n;
     }
   }
