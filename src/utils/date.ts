@@ -30,7 +30,8 @@ export function addMonths(date: Date, months: number): Date {
   const d = new Date(date);
   const day = d.getDate();
   d.setMonth(d.getMonth() + months);
-  // Handle month-end overflow (e.g., Jan 31 + 1 month = Feb 28)
+  // Handle month-end overflow (e.g., Jan 31 + 1 month would become Mar 3).
+  // setDate(0) moves back to the last day of the previous month (Feb 28/29).
   if (d.getDate() !== day) {
     d.setDate(0);
   }

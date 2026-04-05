@@ -4,6 +4,8 @@ export const CURRENCIES: CurrencyMap = {
   USD: {
     symbol: '$',
     name: 'US Dollar',
+    // NOTE: These are placeholder exchange rates (USD base, as of early 2024).
+    // In production, fetch live rates from an external API (e.g., Open Exchange Rates).
     fx: 1,
     locale: 'en-US',
     decimals: 2,
